@@ -1,0 +1,1 @@
+pandoc 070317.txt --latex-engine=xelatex -o 070317.pdf
