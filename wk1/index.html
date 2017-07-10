@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+</head>
+<body>
+<h1 id="in-class-notes-for-july-3rd-2017-data-structures">In Class notes for July 3rd 2017 Data Structures</h1>
+<h2 id="admin">admin</h2>
+<ul>
+<li>If you use code from somewhere— just cite it</li>
+<li>midterm is the Monday of the 4th week; Monday July 24</li>
+<li>50% homework, 20% midterm, 30% final</li>
+<li>Office hours Tuesdays Thursdays Fridays in the evenings</li>
+</ul>
+<h2 id="lecture">lecture</h2>
+<h3 id="what-is-a-data-structure">What is a data structure?</h3>
+<ul>
+<li>a way a organizing information</li>
+</ul>
+<h3 id="what-is-an-algorithm">What is an algorithm?</h3>
+<ul>
+<li>sequence of steps to perform on a data structure in order to solve certain tasks</li>
+</ul>
+<h3 id="an-array-stored-in-memory">An array stored in memory</h3>
+<ul>
+<li>information stored in a location in memory</li>
+<li>arrays start at zero because you're indexing by offset from the first element of the array</li>
+</ul>
+<h3 id="talking-about-algorithms">Talking about algorithms</h3>
+<ul>
+<li>we want to describe the algorithm by using big*oh because input, hardware, and other things are varied</li>
+</ul>
+<h3 id="binary-search">Binary Search</h3>
+<ul>
+<li>breaks arrays up into smaller sub*arrays</li>
+<li>if you're trying to find the middle of an array that has an odd, you can just use integer division because it will always floor it, per integer division.</li>
+<li>What are we actually doing when we use binary search</li>
+<li>we're doing n =2^x, then each iteration of the algorithm will give you 2^{x-1}. In the worst case scenario, you'll be doing 2^{x-x}, but we want to have it in terms of n, which will eventually give us big-oh of log_2 of n.</li>
+<li>We only want to keep track of the low and high points for the array, we dont want to be creating new arrays. This is for space efficiency reasons.</li>
+<li></li>
+</ul>
+<h3 id="arraylists">ArrayLists</h3>
+<ul>
+<li>this is a class that wraps around an Array[]</li>
+</ul>
+<h4 id="example-for-arraylists">example for ArrayLists:</h4>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="bu">ArrayList</span>&lt;AnyType&gt; myArray = <span class="kw">new</span> <span class="bu">ArrayList</span>&lt;<span class="bu">Integer</span>&gt;();
+
+AnyType myGenericType = <span class="kw">new</span> AnyType; <span class="co">// I can do this in my generic methods</span></code></pre></div>
+<p>A generic class is a data type that lets you use any datatype</p>
+<h3 id="linkedlist">LinkedList</h3>
+<ul>
+<li>very different from an array, has a node with 2 values: data and a reference to the next element</li>
+<li>also a doubly linked list that has references to both previous and next node</li>
+</ul>
+<h2 id="proof-by-induction-for">proof by induction for:</h2>
+<ul>
+<li>F_i &lt; (5/3)^i when i /geq 1</li>
+</ul>
+<h3 id="show-base-case">Show base case:</h3>
+<h3 id="assume-true-for-the-base-case-and-some-i-up-to-and-including-some-arbitrary-k">Assume true for the base case and some <span class="math inline"><em>i</em></span> up to and including some arbitrary <span class="math inline"><em>k</em></span>:</h3>
+<ul>
+<li>so then we have to prove that $ F_{k+1} &lt; (5/3)^{k+1} $</li>
+<li>this implies that $ F_{K+1} &lt; (5/3)^k + (5/3)^{k-1} $</li>
+<li>then you can pull a (3/5) out of both terms, but there are 2 in the second</li>
+<li>$ F_{K+1} &lt; (15/25)(5/3)^k + (9/25)(5/3)^{k-1} $</li>
+<li>$ F_{k+1} &lt; (24/25)(5/3)^{k+1} $</li>
+</ul>
+<h4 id="for-recursion">For Recursion:</h4>
+<ol style="list-style-type: decimal">
+<li>There must be some kind of base case, a case that makes you stop</li>
+<li>each time you call the function again, you need to be making progress towards the base case.</li>
+<li>You have to assume that the recursive call works. For example, with the Fibonacci numbers, you have to assume that the recursive calls will work.</li>
+<li>Don't repeat work, this is sometimes referred to as the compound interest rule</li>
+</ol>
+<h3 id="example-of-recursive-algorithm">Example of Recursive Algorithm</h3>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Factorial {
+  <span class="co">// this method assumes non malicious user, not defined for  </span>
+  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">factorial</span>(<span class="dt">int</span> x) {
+    <span class="co">// base case</span>
+    <span class="kw">if</span> (x==<span class="dv">0</span>) {
+      <span class="kw">return</span> <span class="dv">1</span>;
+    }
+
+    <span class="kw">return</span> x*<span class="fu">factorial</span>(x-<span class="dv">1</span>);
+    
+
+  }
+
+}</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="kw">class</span> Fib {
+
+  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">int</span> <span class="fu">fib</span>(<span class="dt">int</span> x) {
+    <span class="co">// base case</span>
+    <span class="kw">if</span> (x == <span class="dv">0</span> || x == <span class="dv">1</span>)
+      <span class="kw">return</span> <span class="dv">1</span>;
+    <span class="co">// recursive call</span>
+    <span class="kw">return</span> <span class="fu">fib</span>(x-<span class="dv">1</span>) + <span class="fu">fix</span>(x-<span class="dv">2</span>);
+  }
+
+  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">final</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span>[] args) {
+    <span class="dt">int</span> x = <span class="bu">Integer</span>.<span class="fu">parseInt</span>(args[<span class="dv">0</span>]);
+    <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="fu">fib</span>(x));
+    
+  }
+
+}</code></pre></div>
+<h4 id="comments-on-the-above">Comments on the above:</h4>
+<ul>
+<li>why is this bad? we're repeating work going all the day down the tree. We're computing the same thing over and over throughout the tree. This algorithm is in fact big-oh of 2^n</li>
+<li>we can use this Dynamic Programming, specifically memoizing the work you've already done. You can use an ArrayList for storing the work you've already done</li>
+</ul>
+<h4 id="generics">Generics</h4>
+<ul>
+<li>We can have both generic methods and generic types</li>
+<li>We want to write methods that can work on any data type</li>
+<li>We can also bound a what a method can work on with something like:</li>
+<li></li>
+</ul>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">static</span> &lt;? <span class="kw">extends</span> shape&gt; <span class="fu">exmaple</span>(&lt;? <span class="kw">extends</span> shape&gt; x) { <span class="kw">... </span>}</code></pre></div>
+<p>For Homework:</p>
+<div class="sourceCode"><pre class="sourceCode java"><code class="sourceCode java"><span class="kw">public</span> <span class="dt">boolean</span> <span class="fu">recursiveBinary</span>(<span class="bu">ArrayList</span>&lt;AnyType&gt; subArray, <span class="dt">int</span> index){
+    <span class="co">// want write a recursive </span>
+        <span class="co">// you want the parameters to look something like:</span>
+            <span class="co">// (array, begin, end, target)</span>
+        <span class="co">// the trick is to overload the method</span>
+        <span class="co">// you&#39;ll have two methods, one which is recursive, the other</span>
+        <span class="co">// which is not.</span>
+        <span class="co">// you want to make the recursive one private</span>
+}</code></pre></div>
+</body>
+</html>
