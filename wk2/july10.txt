@@ -1,1 +1,215 @@
-# In Class Notes July 10 
+#Data Structures and Algorithms
+#In Class Notes July 10
+
+# Table of Contents
+1. [Admin](##Admin)
+2. [Collections](##Collections Continued)
+3. [ArrayLists](###ArrayList)
+4. [LinkedList](###DoublyLinkedList)
+5. [Stacks](###Stacks)
+6. [Review](##To Review Again)
+
+##Admin
+* No late homework
+
+##Collections Continued
+###ArrayList
+* implements **iterable**, so you're required to provide a **iterator** method that returns some object that implements **iterator**
+	- This allows you to use advanced for loops right out of the box
+```Java
+    /**
+     * Obtains an Iterator object used to traverse the collection.
+     * @return an iterator positioned prior to the first element.
+     */
+    public java.util.Iterator<AnyType> iterator( )
+    {
+        return new ArrayListIterator( );
+    }
+
+    /**
+     * This is the implementation of the ArrayListIterator.
+     * It maintains a notion of a current position and of
+     * course the implicit reference to the MyArrayList.
+     */
+    private class ArrayListIterator implements java.util.Iterator<AnyType>
+    {
+        private int current = 0;
+        private boolean okToRemove = false;
+        
+        public boolean hasNext( )
+        {
+            return current < size( );
+        }
+        
+        
+        public AnyType next( )
+        {
+            if( !hasNext( ) ) 
+                throw new java.util.NoSuchElementException( ); 
+                  
+            okToRemove = true;    
+            return theItems[ current++ ];
+        }
+        
+        public void remove( )
+        {
+            if( !okToRemove )
+                throw new IllegalStateException( );
+                
+            MyArrayList.this.remove( --current );
+            okToRemove = false;
+        }
+    }
+
+```
+
+* We know that whatever the class is instantiated with, <AnyType> will refer to that throughout the class definition
+* The `iterator()` method is **required** to return `java.util.Iterator<AnyType>` 
+* Then we instantiated our nested class and return it
+* There are actually 2 kinds of **nested classes**
+	- `Static Nested Class`
+		- This does not have access to outer class's instance variables
+	- `Non-static Nested Class`
+	- A non-static nested class is commonly refered to as an `inner class`
+* Inner classes have access to all of the instance variables of the outer class
+* Non-Static nested classes allow us to reference methods as well. If there does not exist some method that's called in the nested inner class, then Java knows that we're referring to a method of the outer class
+* If you wanted to refer to a method of the outer class, that was overloaded in the inner-class, you can do it as follows:
+* We actually dont need to have a constructor in our inner-class becuase every class extends `Object`, and `Object` has a constructor that the subclass can call. Recall that if you don't have any parameters that you want to pass tothe subclass then you don't have to even call `super()`, it will do it implicitly
+
+```Java
+public void remove( ) {
+	
+	MyArrayList.this.remove( --current );
+}
+```
+
+```Java
+public class MyArrayList<AnyType> implements Iterable<AnyType> {
+    private static final int DEFAULT_CAPACITY = 10;
+
+    private AnyType [ ] theItems; // Where we'll actually store the data
+    private int theSize; // The CURRENT size of the array
+
+    public MyArrayList( )
+    {
+        doClear( );
+    }
+```
+
+* You cannot use a generic placeholder to instantiate an array, so you'll have to instantiate it as an `Object` then cast it to `AnyType`
+
+```Java
+theItems = (AnyType []) new Object[ newCapacity ];
+```
+* You'll have to suppress warnings using a decorator `@SuppressWarnings("unchecked")`
+
+###DoublyLinkedList
+* You can add as many things as you like, until you run out of memory
+* You also have to start out with a head and a tail node
+* We define our Node class inside our LinkedList class; we make it private and static so that it does not have access to their outer class. We can describe them as *Stand-Alone*
+* Adding an element to the end of the list is on the order of 1, this is because we have a reference to the `tail` which is one node after the last **actual** node of the list
+* Recall that ending a node to anywhere but the end or beginning, that work is of the order **N**
+
+**We Guarentee this with the following:**
+```Java
+    private Node<AnyType> getNode( int idx, int lower, int upper )
+    {
+        Node<AnyType> p;
+        
+        if( idx < lower || idx > upper )
+            throw new IndexOutOfBoundsException( "getNode index: " + idx + "; size: " + size( ) );
+            
+        if( idx < size( ) / 2 )
+        {
+            p = beginMarker.next;
+            for( int i = 0; i < idx; i++ )
+                p = p.next;            
+        }
+        else
+        {
+            p = endMarker;
+            for( int i = size( ); i > idx; i-- )
+                p = p.prev;
+        } 
+        
+        return p;
+    }
+```
+
+**Creating out LinkedList iterator**
+```Java
+    /**
+     * This is the implementation of the LinkedListIterator.
+     * It maintains a notion of a current position and of
+     * course the implicit reference to the MyLinkedList.
+     */
+    private class LinkedListIterator implements java.util.Iterator<AnyType>
+    {
+        private Node<AnyType> current = beginMarker.next;
+        private int expectedModCount = modCount;
+        private boolean okToRemove = false;
+        
+        public boolean hasNext( )
+        {
+            return current != endMarker;
+        }
+        
+        public AnyType next( )
+        {
+            if( modCount != expectedModCount )
+                throw new java.util.ConcurrentModificationException( );
+            if( !hasNext( ) )
+                throw new java.util.NoSuchElementException( ); 
+                   
+            AnyType nextItem = current.data;
+            current = current.next;
+            okToRemove = true;
+            return nextItem;
+        }
+        
+        public void remove( )
+        {
+            if( modCount != expectedModCount )
+                throw new java.util.ConcurrentModificationException( );
+            if( !okToRemove )
+                throw new IllegalStateException( );
+                
+            MyLinkedList.this.remove( current.prev );
+            expectedModCount++;
+            okToRemove = false;       
+        }
+    }
+```
+* Since we have referenced to the items in the list, so then we don't have to iterate using indices
+* Why do we have a remove method for the Iterator?
+
+###Stacks
+####Abstract Data Type
+* Think of it like a stack of dishes
+* We really only want to add and remove things from the top of a stack
+* Methods:
+	- `push( )`
+	- `pop( )`
+	- `peek( )` also referred to as `top( )`
+	- `isEmpty( )`
+	- `size( )`
+* *LIFO* data structure, Last In First Out
+* We can use anything that supports a list operation to realize this data structure
+* We can think of pushing at `a[theSize++] = target`
+* We can think of popping at `return a[--theSize];`
+* You can always write methods that are order 1 with the stack ADT
+	- With a singly linked list you just pop/push at the front
+	- with a dobuly linked list it doesn't matter
+	- arrayLists you'll have to always add at the back
+* Recursive method calls are a stack. The top of the stack is the last call the recursive function
+* Palindromes are also a good implementation of a stack
+* Reverse an entire piece of data, push it all onto the stack, then pop the entire stack
+
+
+###Garbage Collection in Java
+* There is a mechanism that will de-allocate memory for objects that are no longer referenced.
+* for every object that you create, you add an extra piece of bookkeeping to it, called `reference count` then when you create a new reference of that object, you increment the reference count, then decrement it. When it is zero, then Java will come along and collect it.
+
+
+##To Review Again
+* Iterator, how do you implement this, what is it exactly, etc...
