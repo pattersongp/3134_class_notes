@@ -109,18 +109,43 @@ A tree where each node either has 0, 1, or 2 children. We can describe them as  
 * A binary tree is called **full** IFF every node has either 2 children or is a leaf
 * A binary tree is called **complete** IFF every level in the tree is completely filled in, except the the last level, which must be filled in from left --> right
 * A binary tree is called **perfect** IFF every level in the tree is completely filled in
-
-
 ```Java
 public BinaryNode<AnyType> {
 	AnyType data;
 	BinaryNode leftChild;
 	BinaryNode rightChild;
 }
+###Use Case for Binary Tree
+Expression Tree
 
+```Java
+int eval(ETNode t) {
+	if(t.isOperand) { return t.value; }
+	int leftVal = eval(t.left);
+	int rightval = eval(t.right);
+	return apply(t.operator, leftVal, rightVal);
+}
+```
+* Note that given some expression tree, if you perform a postfix traversal on the tree, you'll get a postfix expression
 
+####In-order Traversal
+this will given you an expression that we're used to seeing like 1 + (4*2). Before you recurse on any subtree, you need to print an `(` then after any subtree print `)`
 
+1. recurse left
+2. print node
+3. recurse right
 
-
-
-
+###Building an expression tree
+Given some post-fix expression, build an expression tree
+* Given: 4 3 2 + *
+* Use a stack to build an expression tree
+####Algorithm for building the tree
+1. start at 0, put that data into an expression node
+	- if that node's data is an operand, push it onto the stack
+2. continue with line 1 until you reach an **operator**
+3. If operator, make a node for it
+	- pop the stack once and make that value the right subtree of that node
+4. Push that operator node back onto the stack, the children come along because they're still pointing at the stack
+5. repeat until the the expression is either empty or you end up with another operand
+6. if the expression is empty, pop the stack and thats the tree
+7. check that the stack is empty, if not --> something went wrong
