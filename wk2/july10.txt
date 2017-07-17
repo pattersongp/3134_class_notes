@@ -2,12 +2,12 @@
 #In Class Notes July 10
 
 # Table of Contents
-1. [Admin](##Admin)
-2. [Collections](##Collections Continued)
-3. [ArrayLists](###ArrayList)
-4. [LinkedList](###DoublyLinkedList)
-5. [Stacks](###Stacks)
-6. [Review](##To Review Again)
+1. [Admin](#admin)
+2. [Collections](#collections-continued)
+3. [ArrayLists](#arraylist)
+4. [LinkedList](#doublylinkedlist)
+5. [Stacks](#stacks)
+6. [Review](#to-review-again)
 
 ##Admin
 * No late homework
