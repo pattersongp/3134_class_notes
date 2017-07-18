@@ -8,11 +8,11 @@
 <br>__Stacks, Continued__
 * reverse Polish notation, also known as post-fix notation, is where operands come before operators
   ```
-  post-fix example: 3 5 +
-  in-fix example: 3 + 5
+  postfix example: 3 5 +
+  infix example: 3 + 5
 
-  in-fix example: (3 + 5) * 2
-  post-fix example: 3 5 2 + *
+  infix example: (3 + 5) * 2
+  postfix example: 3 5 2 + *
   ```
 * reverse Polish notation uses stack operations
 
@@ -23,7 +23,7 @@
    * the first three tokens are operands, followed by an operator
    * when the algorithm reaches the first operator, it pops twice (pulling 2 and 5) and applies the first operator between them to get 5 + 2 = 7
    * this 7 is then pushed back onto the stack
-   * popping an empty stack (i.e. receiving an operator before pushing two operands) will cause a stack underflow
+   * popping an empy stack (i.e. receiving an operator before pushing two operands) will cause a stack underflow
    * the next token will be an operator, which will make the algorithm pop twice, apply the operator between them to get 3 * 7 = 21
    * error conditions include checking the stack to make sure its empty and ensuring there are two operands in the stack
    ```
@@ -140,13 +140,14 @@
       return apply(t.operator, lval, rval); // takes in an operator and two operands and applies the equation
   }
   ```
-* a post-order traversal on an expression tree will result in a post-fix expression
-* an in-order traversal is where the recursion starts to the left, printing as it makes its way to recurse to the right, resulting in an in-fix expression
+* a postorder traversal on an expression tree will result in a post-fix expression
+* an inorder traversal is where the recursion starts to the left, printing as it makes its way to recurse to the right, resulting in an in-fix expression
   * before recursing on a subtree, print an open parenthesis
   * before leaving the subtree, print a closed parenthesis
+* a preorder traversal works at the node first and creates pre-fixed expressions
 
 <br>__Expression Class__
-* constructor for Expression class will take a post-fix expression and creates an expression tree
+* constructor for Expression class will take a postfix expression and creates an expression tree
   ```
   4 3 2 + *
   ```

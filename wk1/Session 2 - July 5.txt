@@ -123,13 +123,13 @@
   * placing an object at the end of the list would be Big-O(n), since we only have the reference to the first object
   * placing an object at the front of the list would just be Big-O(1)
   * searching or setting would have a worst case scenario of Big-O(n)
-  * inserting into a linked list during interations would have a Big-O(1) based on where the iterator is
+  * inserting into a linked list during iterations would have a Big-O(1) based on where the iterator is
 
 
 **Doubly linked lists**
 
   * also has a 'previous' field, adding an extra piece of data that each node must have
-  * Since you can move in both directions, there is a reference to both the first and last elements of the list
+  * Since you can move in both directions, there is a reference to both the  first and last elements of the list
   * the first and last nodes of a doubly linked list don't actually store data (as sentinel nodes) and are the only references stores
   * addAfter Example
 	``` java
@@ -139,4 +139,4 @@
 	t.next = k.next; // redirects next node from t to k's forward reference
 	k.next = t; // redirects k's forward reference to t
 	t.next.prev = t; // redirects end node's previous reference to t
-	```
+	````
