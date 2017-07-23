@@ -29,7 +29,7 @@
    ```
    5 2 - 3 *
    3 5 2 - *
-   - these will result in the same answer
+   These will result in the same answer
    ```
 
 <br>__Queue Abstract Data Type__
@@ -109,6 +109,7 @@
   ```
   * firstChild will link to the first following child of the root
   * nextSibling will link the first child to the next child node
+
 <br>__Tree Traversal/File Directory Example__
 * a pre-order traversal prints the node first, then it prints the children
 * post-order traversal is simply in reverse
@@ -151,14 +152,12 @@
   ```
   4 3 2 + *
   ```
-* create a stack of ExpressionNodes
-* push the operands onto the stack (4, 3, 2)
-* create a node around the first operator and pop the stack once to create its ight subtree (2)
-* pop the stack again to create its left subtree (3)
-* push the operator node onto the stack (+)
-* moving to the next token (*), create an ExpressionNode around the operator
-* pop the stack twice, for the right subtree (+) and the second for the left (4)
-* push the single node onto the stack, check for another token
-* since there are no tokens left, pop the stack for the answer, check the stack.isEmpty to verify
-
-  * eval, post order, preorder, in order methods
+  * create a stack of ExpressionNodes
+  * push the operands onto the stack (4, 3, 2)
+  * create a node around the first operator and pop the stack once to create its ight subtree (2)
+  * pop the stack again to create its left subtree (3)
+  * push the operator node onto the stack (+)
+  * moving to the next token (*), create an ExpressionNode around the operator
+  * pop the stack twice, for the right subtree (+) and the second for the left (4)
+  * push the single node onto the stack, check for another token
+  * since there are no tokens left, pop the stack for the answer, check the stack.isEmpty to verify

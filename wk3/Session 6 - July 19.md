@@ -1,5 +1,5 @@
 # Data Structures - Session 6, July 19
-* HW 1 solutions are posted
+* Homework 1 solutions are posted
 * lecture summaries updated with Monday's lecture with link of AVL tree viewer
 * Example of AVL tree question: be able to insert a given element into an AVL tree and show location + rotation of tree post-insertion
 * chapter 4.6 talks about tree traversals, might be worth it to read, but no specific comments

@@ -42,44 +42,43 @@
   4. don't repeat work - repeating work will make work accumulate exponentially. Keep track of the work that has already been done, aka "memoizing".
 
 **Factorial example**
-``` java
-public class Factorial {
-  public static int factorial(int x) {
-    // Base Case
-    if (x==0) {
-      return 1;
-    }
+  ``` java
+  public class Factorial {
+    public static int factorial(int x) {
+      // Base Case
+      if (x==0) {
+        return 1;
+      }
 
-    // Recursive call
-    return x * factorial(x - 1);
+      // Recursive call
+      return x * factorial(x - 1);
+    }
   }
-}
-```
+  ```
 
 **Fibonacci example:**
-``` java
-public class Fib {
-  public static int fib(int x) {
-    // Base case
-		if (x == 0 || x == 1) {
+  ``` java
+  public class Fib {
+    public static int fib(int x) {
+      // Base case
+	  	if (x == 0 || x == 1) {
 		  return 1;
-		}
+  		}
 
-    // Recursive call
-		return fib(x - 1) + fib(x - 2);
-		}
-	}
+      // Recursive call
+	  	return fib(x - 1) + fib(x - 2);
+	  	}
+  	}
 
-	public static final void main(String[] args) {
-		int x = Integer.parseInt(args[0]);
-		System.out.println(fib(x));
-}
+	  public static final void main(String[] args) {
+	  	int x = Integer.parseInt(args[0]);
+	  	System.out.println(fib(x));
+  }
 
-// looking for the nth Fibonacci number turns this algorithm's complexity into Big-O(2^n)
-// since each call splits the complexity by another factor of 2. This leads to
-// unreasonable costs at larger integers.
-```
-<br><br>
+  // looking for the nth Fibonacci number turns this algorithm's complexity into Big-O(2^n)
+  // since each call splits the complexity by another factor of 2. This leads to
+  // unreasonable costs at larger integers.
+  ```
 * class generics - generics like ArrayLists, where data type is defined upon use
 * method generics - method that works on any input; using generics allows the data type to be bound to a certain type. Comparable interface uses the class generic as the data type is defined once and is used the same throughout the rest of the interface.
 * invoking binary search on a set of objects may or may not require the Comparable interface to allow the elements to be arranged in an array

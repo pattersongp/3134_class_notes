@@ -20,14 +20,14 @@
     * i++ is another operation
     * these operations are all constants compared to the variable aspect of the cost
 
-* $T(n) = O(f(n))$ such that there exist some constants $c$ & $n_o$ where $T(n) \leqslant cf(n)$ where $n \leqslant n_o$
+* $T(N) = O(f(N))$ such that there exist some constants $c$ & $n_o$ where $T(N) \leqslant cf(N)$ when $N \geqslant n_o$
 * Big-O provides an upper bound complexity estimate
 * Big omega definition:
-   $T(n) = \Omega(g(n))$ if there exists some constants c & no such that T(n) >= cg(n) where n >= no
+   $T(N) = \Omega(g(N))$ if there exists some constants $c$ & $n_o$ such that $T(N) \geqslant cg(N)$ when $N \geqslant n_o$
 * Big theta definition:
-   $T(n) = \Theta(h(n))$ if
-   * $T(n) = O(h(n))$ &
-   * $T(n) = \Omega(h(n))$
+   $T(N) = \Theta(h(N))$ if
+   * $T(N) = O(h(N)))$ &
+   * $T(N) = \Omega(h(N))$
 
 
 **Linear search example:**
@@ -39,14 +39,14 @@
 
 **Relative speeds**
 
-  * constant $c$ would be the fastest costs
-  * $logn$ would grow very slowly and be the next fastest
-  * $log^2n$, $log^3n$, so on
-  * linear time algorithms $n$
-  * $nlogn$, $n^2logn$, etc
-  * $n^2$, $n^3$, so on
-  * exponential algorithms, $2^n$
-  * $n!$ is the slowest/greatest cost
+* constant $c$ would be the fastest costs
+* $logn$ would grow very slowly and be the next fastest
+* $log^2n$, $log^3n$, so on
+* linear time algorithms $n$
+* $nlogn$, $n^2logn$, etc
+* $n^2$, $n^3$, so on
+* exponential algorithms, $2^n$
+* $n!$ is the slowest/greatest cost
 
 
 1. If we have two separate algorithms, $T_1(n) = O(f(n))$ and $T_2(n) = O(g(n))$
@@ -64,9 +64,9 @@
 	  for (j=i;j<nj++)
 		  x++;
 ```
-  * the first iteration of the loop will have n, second will have (n - 1), etc
-  * the total sum would be n(n + 1)/2
-  * the sum evaluated would be n^2/2 + n /2, which would equal Big-O(n^2)
+* the first iteration of the loop will have n, second will have $(n - 1)$, etc
+* the total sum would be $n(n + 1)/2$
+* the sum evaluated would be n^2/2 + n /2, which would equal Big-O $(n^2)$
 
 
 **If-statement Example**
@@ -128,10 +128,10 @@
 
 **Doubly linked lists**
 
-  * also has a 'previous' field, adding an extra piece of data that each node must have
-  * Since you can move in both directions, there is a reference to both the  first and last elements of the list
-  * the first and last nodes of a doubly linked list don't actually store data (as sentinel nodes) and are the only references stores
-  * addAfter Example
+* also has a 'previous' field, adding an extra piece of data that each node must have
+* Since you can move in both directions, there is a reference to both the  first and last elements of the list
+* the first and last nodes of a doubly linked list don't actually store data (as sentinel nodes) and are the only references stores
+* addAfter Example
 	``` java
 	addAfter(k)
 	t = new Node(30); // new node
