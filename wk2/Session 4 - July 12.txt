@@ -151,14 +151,14 @@
   ```
   4 3 2 + *
   ```
-  * create a stack of ExpressionNodes
-  * push the operands onto the stack (4, 3, 2)
-  * create a node around the first operator and pop the stack once to create its ight subtree (2)
-  * pop the stack again to create its left subtree (3)
-  * push the operator node onto the stack (+)
-  * moving to the next token (*), create an ExpressionNode around the operator
-  * pop the stack twice, for the right subtree (+) and the second for the left (4)
-  * push the single node onto the stack, check for another token
-  * since there are no tokens left, pop the stack for the answer, check the stack.isEmpty to verify
+* create a stack of ExpressionNodes
+* push the operands onto the stack (4, 3, 2)
+* create a node around the first operator and pop the stack once to create its ight subtree (2)
+* pop the stack again to create its left subtree (3)
+* push the operator node onto the stack (+)
+* moving to the next token (*), create an ExpressionNode around the operator
+* pop the stack twice, for the right subtree (+) and the second for the left (4)
+* push the single node onto the stack, check for another token
+* since there are no tokens left, pop the stack for the answer, check the stack.isEmpty to verify
 
   * eval, post order, preorder, in order methods
