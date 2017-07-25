@@ -154,7 +154,7 @@
   ```
   * create a stack of ExpressionNodes
   * push the operands onto the stack (4, 3, 2)
-  * create a node around the first operator and pop the stack once to create its ight subtree (2)
+  * create a node around the first operator and pop the stack once to create its right subtree (2)
   * pop the stack again to create its left subtree (3)
   * push the operator node onto the stack (+)
   * moving to the next token (*), create an ExpressionNode around the operator
