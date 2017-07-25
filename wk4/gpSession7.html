@@ -1014,154 +1014,75 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>gpSession5</title></head><body><article class="markdown-body"><h1 id="data-structures-in-class-notes"><a name="user-content-data-structures-in-class-notes" href="#data-structures-in-class-notes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Data Structures In Class Notes</h1>
-<p><strong>July 17 2017</strong></p>
-<h1 id="table-of-contents"><a name="user-content-table-of-contents" href="#table-of-contents" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Table of Contents</h1>
+</style><title>gpSession7</title></head><body><article class="markdown-body"><h1 id="data-structures-in-class-notes"><a name="user-content-data-structures-in-class-notes" href="#data-structures-in-class-notes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Data Structures in class notes</h1>
+<p><strong>July 24, 2017</strong></p>
+<h2 id="table-of-contents"><a name="user-content-table-of-contents" href="#table-of-contents" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Table of Contents</h2>
 <ol>
 <li><a href="#admin">Admin</a></li>
-<li><a href="#expressiontree-continued">ExpressionTrees</a></li>
-<li><a href="#binary-search-tree">Binary Trees</a></li>
-<li><a href="#self-balancing-binary-search-trees">Balanced BST&rsquo;s</a></li>
+<li><a href="#hash-tables-continued">Hash Tables</a></li>
 </ol>
 <h2 id="admin"><a name="user-content-admin" href="#admin" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Admin</h2>
-<p><em>Midterm half the class<br />
-</em>write all psuedo-code in Java-like code<br />
-<em>Midterm guide review posted on Wednesday<br />
-</em>Midterm will have an induction proof on the properties of binary search trees<br />
-*Study how to write an insert element into a tree</p>
-<h2 id="expressiontree-continued"><a name="user-content-expressiontree-continued" href="#expressiontree-continued" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ExpressionTree Continued</h2>
-<p><em>Not Generic at all, each node has specific data-types associated with it<br />
-</em>Nodes are internal to the ExpressionTree class ie nested<br />
-<strong>Expression Tree Class Example</strong><br />
-<pre><code class="Java">public class ExpressionTree {
-
-    private static class Node {
-
-        Node left;
-        Node right;
-        char operator;
-        int operand;
-        boolean isOperator;
-    }
-
-    //ExpressionTreeClass Start
-
-    Node root; //All other nodes will hang off that root
-    public ExpressionTree(String expression){
-        //populate Expression tree here
-
-    }
-    public int eval() {
-        // takes in nothing
-        // calls a recursive in-order tree traversal
-        return eval(root);
-    }
-    private int eval (Node t) {
-        //recursive method here
-    }
-}
-</code></pre></p>
-<h2 id="binary-trees"><a name="user-content-binary-trees" href="#binary-trees" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Binary Trees</h2>
-<h3 id="proof-for-number-of-leaves"><a name="user-content-proof-for-number-of-leaves" href="#proof-for-number-of-leaves" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Proof for number of Leaves</h3>
-<p>If you have a binary-tree of height <em>h</em>, I want to be able to say how many leaf nodes there are. The number of leaves in a binary-tree is <strong>at most</strong> 2^h. The perfect binary-tree of height <em>h</em> will have 2^h leaves.<br />
-1. We see that the base case is of height 0, then the 2^0 perfect binary-tree has 1 leaf. So the base case holds true.<br />
-2. Assume that all perfect binary trees of height <em>n</em> where <em>n</em> goes from 0 to <em>h</em> have 2^n leaves.<br />
-3. Then it follows that height <em>h+1</em> needs to have 2^{h+1} leaves<br />
-4. Then with 2 perfect binary trees with 2^h leaves, then adding a root which connects both of them, then you can add them together. You&rsquo;ll have 2^h + 2^h = 2 * 2^h = 2^{h+1}</p>
-<h3 id="proof-for-number-of-nodes"><a name="user-content-proof-for-number-of-nodes" href="#proof-for-number-of-nodes" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Proof for number of Nodes</h3>
-<p>We want to prove total nodes in a perfect binary tree of height h is <strong>2^{h+1} - 1</strong>. The height is a binary tree is log_(n) where n is the number of nodes<br />
-1. base case: h = 0, 2^1 - 1 = 1<br />
-2. Assume true for heights 0 to h, then we want to prove true for height h+1 is 2^{h+2} - 1<br />
-3. Then we can build two perfect binary trees of 2^{h+1}-1, then adding them both together, then + 1 for the new root node that we&rsquo;ve added, we end up with <strong>2^{h+2} - 1</strong></p>
-<h3 id="binary-search-trees-bsts"><a name="user-content-binary-search-trees-bsts" href="#binary-search-trees-bsts" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Binary Search Trees - BST&rsquo;s</h3>
-<p>*The Binary Search condition is a constraint that defines what can be on the left and right of any given node. The binary search node has data that has to be comparable. Any node in the left subtree of a node, must be less than the parenting node. Then it follows that any right subtree will be greater than the parenting node&rsquo;s data. That is all nodes on the left and right of any given Node.</p>
-<h4 id="inserting-and-searching"><a name="user-content-inserting-and-searching" href="#inserting-and-searching" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Inserting and Searching</h4>
-<p><em>The worst case is that you have to go to the bottom of the tree, which is the height <em>h</em> of the tree.<br />
-</em>The worst case is that you have a big-oh of N cost, because there are situations when you degenerate into a linked-list<br />
-    - this would occur is something like: 1, 2, 3, 4 then inserting 1, then 2 &hellip; You&rsquo;ll end up with a binary search tree that is actually shaped like a LinkedList</p>
-<h4 id="remove-operations"><a name="user-content-remove-operations" href="#remove-operations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Remove Operations</h4>
-<p><em>You start by searching for it, if the target node has no children, then the operation is easy.<br />
-</em>If the target node has only 1 child, then its still very easy, you can just bring up that one child to the position of the targeted node<br />
-*If they have two children, the largest node in the left subtree, or the smallest node in the right subtree are the only ones that can replace the root of any tree or subtree</p>
-<h4 id="binarysearchtree-example"><a name="user-content-binarysearchtree-example" href="#binarysearchtree-example" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>BinarySearchTree Example</h4>
 <ul>
-<li>Notice that for this one, you&rsquo;re <strong>not</strong> returning you&rsquo;re using the assignment operator.<br />
-<pre><code class="Java">private BinaryNode&lt;AnyType&gt; insert( AnyType x, BinaryNode&lt;AnyType&gt; t )
-    {
-        if( t == null )
-            return new BinaryNode&lt;&gt;( x, null, null );
-
-        int compareResult = x.compareTo( t.element );
-
-        if( compareResult &lt; 0 )
-            t.left = insert( x, t.left ); // notice that you're assigning here, not returning
-        else if( compareResult &gt; 0 )
-            t.right = insert( x, t.right );
-        else
-            ;  // Duplicate; do nothing // this is a pass call
-        return t;
-    }
-</code></pre></li>
-</ul>
-<h5 id="in-order-traversal-exmaple"><a name="user-content-in-order-traversal-exmaple" href="#in-order-traversal-exmaple" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>In-Order Traversal Exmaple</h5>
-<p><em>Prints in sorted order<br />
-</em><br />
-<pre><code class="Java">private void printTree( BinaryNode&lt;AnyType&gt; t )
-    {
-        if( t != null )
-        {
-            printTree( t.left );
-            System.out.println( t.element );
-            printTree( t.right );
-        }
-    }
-</code></pre></p>
-<h5 id="remove-method"><a name="user-content-remove-method" href="#remove-method" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Remove Method</h5>
-<pre><code class="Java">    private BinaryNode&lt;AnyType&gt; remove( AnyType x, BinaryNode&lt;AnyType&gt; t )
-    {
-        if( t == null )
-            return t;   // Item not found; do nothing
-
-        int compareResult = x.compareTo( t.element );
-
-        if( compareResult &lt; 0 )
-            t.left = remove( x, t.left );
-        else if( compareResult &gt; 0 )
-            t.right = remove( x, t.right );
-        //The below only occurs if we're at the node that we want to remove
-        //The above exactly the same as the insert method
-        else if( t.left != null &amp;&amp; t.right != null ) // Two children
-        {
-            t.element = findMin( t.right ).element;
-            t.right = remove( t.element, t.right );
-        }
-        else
-            t = ( t.left != null ) ? t.left : t.right;
-        return t;
-    }
-</code></pre>
-
-<h4 id="lazy-deletetion"><a name="user-content-lazy-deletetion" href="#lazy-deletetion" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Lazy Deletetion</h4>
-<p><em>We can do this with a boolean variable for <code>Active</code><br />
-</em></p>
-<h2 id="self-balancing-binary-search-trees"><a name="user-content-self-balancing-binary-search-trees" href="#self-balancing-binary-search-trees" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Self-balancing Binary Search Trees</h2>
-<p>A red-black trees are common balanced BST&rsquo;s, but we&rsquo;re going to go over AVL tree. These are self-Balancing binary search trees. So that means that the properties of a BST, plus two conditions. The <strong>AVL condition</strong> is the so-called balance condition, at any node in the tree, the height of its left subtree cannot differ from the right subtree by more than 1. This is where it is useful to think of the height of an empty tree as -1. You&rsquo;ll want to store the height of a node in the node itself. </p>
-<h3 id="rotations"><a name="user-content-rotations" href="#rotations" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Rotations</h3>
-<h4 id="we-can-group-in-4-categories"><a name="user-content-we-can-group-in-4-categories" href="#we-can-group-in-4-categories" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>We can group in 4 categories</h4>
-<ol>
-<li>3 nodes going left, like a linkedList (zig-zig case)<ul>
-<li>calls for a single rotation</li>
-<li>you want to make the left child the root of the tree in this case,</li>
-<li>x -&gt; y -&gt; z because z &lt;- y -&gt; x</li>
-</ul>
-</li>
-<li>3 nodes, 1 goes left, then right (zig-zag case)<ul>
-<li>this requires a double rotation</li>
-<li>z will ultimately become the root</li>
-<li>we single-rotate the bottom node, which gives us a zig-zig case then we can just do a single-rotation again</li>
+<li>Homework 3 due Friday, then programming due Monday</li>
+<li>Question 1 on the final will be on induction proof about graphs</li>
 <li></li>
 </ul>
+<h2 id="hash-tables-continued"><a name="user-content-hash-tables-continued" href="#hash-tables-continued" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Hash Tables Continued</h2>
+<ul>
+<li>What do we want to do with hash-tables?<ul>
+<li>insert keys</li>
+<li>contains check - Execute the h_i algorithm until we land on the element or an empty cell<ul>
+<li>Then we have to be careful about our remove methods</li>
+</ul>
 </li>
-<li>Then the mirror of 1</li>
-<li>Then the mirror of 2</li>
-</ol></article></body></html>
+<li>remove keys<ul>
+<li>We can use lazy deletion to avoid running into the issue with removing an element after probing past it</li>
+<li>We count lazily deleted elements in our load factor</li>
+<li>Whenever we grow the array, we can delete all those lazily deleted elements, because we don&rsquo;t care about those elements anymore, and we&rsquo;re going to re-hash all of those elements anyway, so we don&rsquo;t have to worry about deletions and the problems associated with them.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="probing-hash-tables"><a name="user-content-probing-hash-tables" href="#probing-hash-tables" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Probing Hash Tables</h3>
+<ul>
+<li>Opening addressing schemes</li>
+<li>Open addressing scheme, there is no serperate chaining; You&rsquo;ll have to find a different slot in-case of a collision<ul>
+<li>this means that the maximum lamda is <code>1</code> but we really want to shoot for <code>1/2</code></li>
+</ul>
+</li>
+<li>In probing, you&rsquo;ll apply the hash function, then mod it by the table size, in-case of a collision you&rsquo;ll have a probing function that takes the location to a next location, producing a sequence, h_i (x)<ul>
+<li>We can call that second probing function f(i) where i is the index</li>
+<li>Boils down to: <code>h_i(x) = (hash(x)+f(i))%TableSize</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="linear-probing"><a name="user-content-linear-probing" href="#linear-probing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Linear Probing</h4>
+<ul>
+<li>The probing function is linear</li>
+<li><code>f(i) = i</code></li>
+<li>If we end up with a cluster of linear probes inside out hash-table, we get something called <code>primary clustering</code> which is the downfall of the <code>linear probing</code> technique</li>
+<li></li>
+</ul>
+<h4 id="quadratic-probing"><a name="user-content-quadratic-probing" href="#quadratic-probing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Quadratic Probing</h4>
+<ul>
+<li><code>f(i) = i^2</code></li>
+<li>Everything for linear probing and the bare ADT holds true, but we square the index in case of collisions.</li>
+<li>You need to make the table size prime, or else you&rsquo;ll run into an issue where elements might not be able to be insertable, you&rsquo;ll just run around the table infinitely</li>
+</ul>
+<h4 id="proof-by-contradiction"><a name="user-content-proof-by-contradiction" href="#proof-by-contradiction" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Proof by contradiction</h4>
+<ul>
+<li>Not sure what this proves</li>
+</ul>
+<p><img alt="alt text" src="/Users/grahampatterson/Library/Mobile%20Documents/com%7Eapple%7ECloudDocs/columbiaSemesters/summer_2017/3134_dataStuctures/class_notes/wk4/texSession5.png" /></p>
+<!-- \[ 0 \leq i, j < \frac{ts}{2}  where  i \neq j \]
+\[ hash(x) + i^2 = hash(x) + j^2 (mod TS) \]
+\[ i^2 = j^2 (mod TS) \]
+\[ i^2 - j^2 = 0 (mod TS) \]
+\[ (i-j)(i+j) = 0 (mod TS) \] -->
+
+<h4 id="double-hashing"><a name="user-content-double-hashing" href="#double-hashing" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Double Hashing</h4>
+<ul>
+<li>need to review this on your own</li>
+</ul>
+<h4 id="review-the-code-for-weiss"><a name="user-content-review-the-code-for-weiss" href="#review-the-code-for-weiss" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Review the code for Weiss</h4></article></body></html>

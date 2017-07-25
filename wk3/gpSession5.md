@@ -61,7 +61,7 @@ If you have a binary-tree of height _h_, I want to be able to say how many leaf 
 We want to prove total nodes in a perfect binary tree of height h is **2^{h+1} - 1**. The height is a binary tree is log_(n) where n is the number of nodes
 1. base case: h = 0, 2^1 - 1 = 1
 2. Assume true for heights 0 to h, then we want to prove true for height h+1 is 2^{h+2} - 1
-3. Then we can build two perfect binary trees of 2^{h+1}-1, then adding them both together, then + 1 for the new root node that we've added, we end up with **2^{h+1} - 1**
+3. Then we can build two perfect binary trees of 2^{h+1}-1, then adding them both together, then + 1 for the new root node that we've added, we end up with **2^{h+2} - 1**
 
 ###Binary Search Trees - BST's
 *The Binary Search condition is a constraint that defines what can be on the left and right of any given node. The binary search node has data that has to be comparable. Any node in the left subtree of a node, must be less than the parenting node. Then it follows that any right subtree will be greater than the parenting node's data. That is all nodes on the left and right of any given Node.
