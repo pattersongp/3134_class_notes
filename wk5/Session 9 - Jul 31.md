@@ -8,7 +8,7 @@
 * for chapter 9, we're looking at 9.1, 9.2, first half of 9.3, 9.5, and 9.7
 * we did not get to cover Huffman coding, which is in a regular DS curriculum
 
-*Wednesday: adjacency, strongly/weakly connected graph, topological sorting,
+* Wednesday: adjacency, strongly/weakly connected graph, topological sorting,
 
 <br> __Mergesort__
 * If $T(N)$ is the cost of running mergesort on an input of size N, then the cost of running mergesort on input size $N/2$ = $T(N)$. The method is called twice and the cost of merging the input is N. Therefore the equation we have is:
