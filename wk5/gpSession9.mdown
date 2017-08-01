@@ -1,0 +1,48 @@
+#Data Structures
+**July 31 2017**
+
+##Admin
+* Homework 4 going to come out tonight
+* Homework 5 is going to be due the Friday after the final
+* Skip shellsort
+* read the first 3 pages of Chapter 8
+* read about huffman coding in your free time
+
+##Merge Sort Continued
+* Cost is O(N log N)
+
+###Proof of Cost
+* We can use the 'master theorem' to solve this recurrence relation
+
+![Whatever](texSession9.png)
+
+##Quicksort
+* Find a pivot value, then partition the array around that element. All elements to the left of the pivot are less than the pivot and all the elements to the right are larger than it.
+* Then I can recursively sort the two partitioned spaces
+* If you pick the largest or smallest element, the algorithm will degenerate into a selection sort.
+* Moving i, j towards eachother from either side of the array, then swapping elements that are not in the correct side of the pivot.
+* When i has passed j, we can swap the pivot and i.
+
+###Pros
+* Less of a space constraint, we can do this in place, we don't need a temporary array to hold our sorted, new array.
+* On average, it is about N logN time
+
+###Cons
+* It doesn't achieve N logN in the worst case, but the likely hood of hitting the worst case is very small.
+
+###Picking a Pivot
+* Median of three, look at first, last, middle, then find the median of those three
+* Then this is your pivot point
+
+##Graphs
+* Defined as two sets G = {V, E} for the graph G with V vertices and E edges
+* Directed and undirected graphs, (v,w) == (w,v)
+* Two vertices are considered adjacent if there is a path between them
+* Edges sometimes have weights xor costs
+* Cycle is a path that comes back to its starting point at some point along the path
+* Simple path have all distict vertices
+* A directed graph is acyclic if there are no cycles (DAG)
+* Remember that big V is the set of vertices and big E is the set of edges
+* sparse graphs has magnitude E edges on the magnitude V vertices
+* dense graph has magnitude E edges on the magnitude V^2 vertices
+
